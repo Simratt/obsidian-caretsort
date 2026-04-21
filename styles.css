@@ -1,0 +1,143 @@
+
+/* -------------------------------------------------------------
+   1. The ▾ arrow in each column header
+   ------------------------------------------------------------- */
+.caretsort-btn {
+	/* inline-flex lets height/width behave like a real box instead of
+	   being driven by font-size + line-height. Centers the ▾ glyph
+	   inside the box no matter the size. */
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	height: 20px;                  /* vertical size */
+	width: 15px;                   /* width */
+	padding: 0;                    /* flex handles centering, no padding needed */
+	margin-left: 12px;             /* space between header text and arrow */
+	font-size: 0.75em;             /* relative to header text — subtle */
+	line-height: 1;                /* predictable vertical math */
+	background: transparent;       /* no button chrome */
+	border: none;
+	cursor: pointer;               /* pointer cursor hints it's clickable */
+	color: var(--text-muted);      /* muted gray by default */
+	opacity: 0.5;                  /* half-visible at rest — low weight   */
+	transition: opacity 0.15s ease; /* smooth fade on hover */
+}
+
+.caretsort-btn:hover {
+	opacity: 1;                     /* full visible on hover */
+	color: var(--text-normal);      /* full contrast */
+}
+
+
+/* -------------------------------------------------------------
+   2. The dropdown popup
+   -------------------------------------------------------------
+   position: absolute — positioned by JS via top/left relative to
+   <body>. z-index keeps it above note content.
+
+   ------------------------------------------------------------- */
+.caretsort-dropdown {
+	position: absolute;                                      /* free-floating */
+	z-index: 1000;                                           /* float above content */
+	background: var(--background-primary);                   /* matches note bg */
+	border: 1px solid var(--background-modifier-border);     /* thin divider */
+	border-radius: 8px;                                      /* rounded corners */
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);               /* depth: x y blur color */
+	padding: 6px;                                            /* inner breathing room */
+	display: flex;
+	flex-direction: column;                                  /* items stack vertically */
+	gap: 4px;                                                /* vertical space between items */
+	min-width: 120px;                                        /* prevent narrow cramped look */
+}
+
+
+/* -------------------------------------------------------------
+   3. Each sort option button inside the dropdown
+   ------------------------------------------------------------- */
+.caretsort-item {
+	background: transparent;                /* reveals dropdown bg */
+	border: none;
+	text-align: left;                       /* label hugs left edge */
+	padding: 8px 8px;                       /* top/bottom, left/right */
+	cursor: pointer;
+	font-size: 0.9em;                       /* slightly smaller than body */
+	color: var(--text-normal);
+	border-radius: 6px;                     /* rounded so hover tint rounds too */
+	transition: background 0.1s ease;       /* smooth hover transition */
+}
+
+.caretsort-item:hover {
+	background: var(--background-modifier-hover);         /* theme-aware hover tint */
+}
+
+.caretsort-item:active {
+	background: var(--background-modifier-active-hover);  /* theme-aware pressed tint */
+}
+
+/* =============================================================
+   Caretsort — styles.css
+   -------------------------------------------------------------
+   Three things get styled here:
+     1. .caretsort-btn       → the tiny ▾ arrow injected into each
+                             column header
+     2. .caretsort-dropdown  → the popup container that appears
+                             below the arrow on click
+     3. .caretsort-item      → each sort option inside the dropdown
+                             (e.g. "↑ A → Z", "↓ Z → A")
+
+   -------------------------------------------------------------
+   USING OBSIDIAN'S THEME VARIABLES
+   -------------------------------------------------------------
+   Colors below use var(--...) from Obsidian's theme system so
+   the plugin auto-adapts to every user's light/dark theme and
+   custom theme. Don't hardcode hex values unless you really
+   mean it — it will break for most users.
+
+   Useful vars:
+     --background-primary              main note background
+     --background-secondary            sidebar / panel background
+     --background-modifier-border      subtle border color
+     --background-modifier-hover       hover tint
+     --background-modifier-active-hover pressed tint
+     --text-normal                     body text color
+     --text-muted                      subdued text
+     --text-accent                     link / accent color
+     --interactive-accent              bright accent bg
+     --text-on-accent                  text color on accent bg
+
+   To see the full list: open Obsidian → Cmd/Ctrl+Opt+I → inspect
+   any element → Computed styles → scroll to the -- variables.
+
+   -------------------------------------------------------------
+   RELOADING AFTER CHANGES
+   -------------------------------------------------------------
+   CSS edits in the installed plugin folder
+   (<vault>/.obsidian/plugins/caretsort/styles.css) apply
+   on reload (Cmd/Ctrl+R). No rebuild needed for pure CSS. If
+   editing the source repo, copy styles.css into the plugin
+   folder after saving.
+
+   -------------------------------------------------------------
+   COMMON CUSTOMIZATION RECIPES
+   -------------------------------------------------------------
+   Pill-shaped items:
+     .caretsort-item { border-radius: 999px; }
+
+   Accent-colored hover:
+     .caretsort-item:hover {
+         background: var(--interactive-accent);
+         color: var(--text-on-accent);
+     }
+
+   Tighter, denser dropdown:
+     .caretsort-dropdown { padding: 4px; gap: 2px; min-width: 110px; }
+     .caretsort-item     { padding: 4px 8px; font-size: 0.85em; }
+
+   More visible arrow button at rest:
+     .caretsort-btn { opacity: 0.8; font-size: 0.9em; }
+
+   Heavier / softer shadow:
+     .caretsort-dropdown { box-shadow: 0 8px 24px rgba(0,0,0,0.35); }
+     .caretsort-dropdown { box-shadow: 0 2px 6px  rgba(0,0,0,0.08); }
+============================================================= */
+

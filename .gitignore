@@ -1,0 +1,10 @@
+node_modules/
+main.js
+*.js.map
+.DS_Store
+
+# Local-only — contains personal vault path, do not commit
+deploy.sh
+deploy.local.sh
+.env
+.env.local
