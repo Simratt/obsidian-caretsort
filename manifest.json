@@ -3,7 +3,7 @@
 	"name": "Caretsort",
 	"version": "0.1.0",
 	"minAppVersion": "1.4.0",
-	"description": "A minimalist table sort for Obsidian. Click the caret in any column header to sort rows A→Z, Z→A, or numerically. Named for both the ▾ you click and the nod to quicksort.",
+	"description": "Minimalist table sort. Click the caret in any column header to sort rows A→Z, Z→A, or numerically.",
 	"author": "Simrat Bains",
 	"authorUrl": "https://github.com/Simratt",
 	"isDesktopOnly": false
