@@ -12,7 +12,9 @@ This is my "painkiller solution." There are no API calls or external services or
 
 ## What it does
 
-Adds a little `▾` next to every column header. Click the arrow, pick **A → Z** or **Z → A**, and the plugin rewrites your markdown file in place. For numerical values, it shows *Ascending* or *Descending*. The new sort order reflects in the markdown file because it's actually edited on the disk, not just in a view. You can also undo in the view mode to quickly reset the table edits.
+Adds a little `▾` next to every column header. Click the arrow, pick **A → Z** or **Z → A**, and the plugin rewrites your markdown file in place. For numerical values, it shows *Ascending* or *Descending*. The new sort order reflects in the markdown file because it's actually edited on the disk, not just in a view.
+
+You can also undo the last sort from reading view. To use it, open **Settings → Hotkeys**, search for *"Caretsort: Undo last table sort"*, and bind whatever key you want (e.g. `Cmd/Ctrl+Z`). No default is set to avoid conflicting with Obsidian's built-in shortcuts.
 
 ![header dropdown placeholder](docs/undo.gif)
 
