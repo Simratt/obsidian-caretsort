@@ -26,7 +26,7 @@ export default class CaretsortPlugin extends Plugin {
 	// previous state (provided the file hasn't been modified since).
 	private sortHistory: SortHistoryEntry[] = [];
 
-	async onload() {
+	onload() {
 		this.registerMarkdownPostProcessor((el, ctx) =>
 			this.processTables(el, ctx)
 		);
@@ -42,9 +42,6 @@ export default class CaretsortPlugin extends Plugin {
 		this.addCommand({
 			id: "undo-last-sort",
 			name: "Undo last table sort",
-			hotkeys: [
-				{ modifiers: ["Mod"], key: "z" },
-			],
 			checkCallback: (checking: boolean) => {
 				const view = this.app.workspace.getActiveViewOfType(MarkdownView);
 				const inReading = view?.getMode?.() === "preview";
@@ -63,9 +60,7 @@ export default class CaretsortPlugin extends Plugin {
 
 	processTables(el: HTMLElement, ctx: MarkdownPostProcessorContext) {
 		const tables = el.querySelectorAll("table");
-		tables.forEach((table) =>
-			this.enhanceTable(table as HTMLTableElement, ctx)
-		);
+		tables.forEach((table) => this.enhanceTable(table, ctx));
 	}
 
 	enhanceTable(
