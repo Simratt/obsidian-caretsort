@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-caretsort",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "A minimalist table sort for Obsidian.",
 	"main": "main.js",
 	"scripts": {
